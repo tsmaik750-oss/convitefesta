@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 FESTA TRIPLA! 🎉</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FFF8E7 0%, #FFE4B5 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .title {
+            font-size: 3em;
+            color: #D4941E;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: pulse 2s infinite;
+        }
+
+        .subtitle {
+            color: #8B6914;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        /* Countdown Section */
+        .countdown-section {
+            text-align: center;
+            margin: 40px 0;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .countdown-label {
+            color: #D4145A;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .countdown-item {
+            background: linear-gradient(135deg, #FFE066 0%, #FFD23F 100%);
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            min-width: 100px;
+            transition: transform 0.3s;
+        }
+
+        .countdown-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .countdown-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #8B6914;
+        }
+
+        .countdown-text {
+            font-size: 0.9em;
+            color: #6B5914;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #FF9500 0%, #FF7700 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 119, 0, 0.3);
+            animation: bounce 2s infinite;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 119, 0, 0.4);
+        }
+
+        /* Preview Section */
+        .preview-section {
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .section-title {
+            color: #D4941E;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            color: #8B6914;
+            margin-bottom: 30px;
+        }
+
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 450px;
+        }
+
+        /* Birthday People Section */
+        .birthday-people {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+
+        .person-card {
+            background: linear-gradient(135deg, #FFE066 0%, #FFD23F 100%);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+            min-width: 150px;
+        }
+
+        .person-card:hover {
+            transform: translateY(-5px) rotate(2deg);
+        }
+
+        .person-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8B6914 0%, #D4941E 100%);
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+        }
+
+        .person-name {
+            color: #8B6914;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        /* Details Section */
+        .details-section {
+            margin: 60px 0;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .detail-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .detail-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .detail-header {
+            background: linear-gradient(135deg, #FF9500 0%, #FF7700 100%);
+            color: white;
+            padding: 15px 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .detail-content {
+            padding: 20px;
+            background: #FFF8E7;
+        }
+
+        .detail-item {
+            margin: 10px 0;
+            color: #6B5914;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .detail-icon {
+            font-size: 1.2em;
+        }
+
+        /* What to Expect Section */
+        .expect-section {
+            margin: 60px 0;
+        }
+
+        .expect-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .expect-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .expect-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .expect-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .expect-title {
+            color: #D4941E;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .expect-description {
+            color: #6B5914;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        /* RSVP Section */
+        .rsvp-section {
+            background: linear-gradient(135deg, #FFB700 0%, #FF8C00 100%);
+            padding: 60px 20px;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .rsvp-title {
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .rsvp-subtitle {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 30px;
+        }
+
+        .rsvp-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .rsvp-btn {
+            background: white;
+            color: #FF7700;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .rsvp-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .confirm-btn {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+
+        .confirm-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #8B4513 0%, #654321 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: -1px;
+        }
+
+        .footer-logo {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+        }
+
+        .footer-text {
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .footer-names {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2em;
+            }
+            
+            .countdown-item {
+                min-width: 80px;
+                padding: 15px 20px;
+            }
+            
+            .countdown-number {
+                font-size: 2em;
+            }
+            
+            .video-container iframe {
+                height: 250px;
+            }
+        }
+
+        /* Confetti Animation */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #FFD700;
+            position: absolute;
+            animation: confetti-fall 3s linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="title">🎉 FESTA TRIPLA! 🎉</h1>
+            <p class="subtitle">Três amigos, três velas a soprar, uma só celebração para recordar!</p>
+        </div>
+
+        <!-- Countdown -->
+        <div class="countdown-section">
+            <p class="countdown-label">🎈 Contagem Regressiva 🎈</p>
+            <p style="color: #8B6914; margin-bottom: 20px;">Faltam apenas...</p>
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">03</div>
+                    <div class="countdown-text">Dias</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">02</div>
+                    <div class="countdown-text">Horas</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">30</div>
+                    <div class="countdown-text">Minutos</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">55</div>
+                    <div class="countdown-text">Segundos</div>
+                </div>
+            </div>
+            <button class="cta-button" onclick="scrollToRSVP()">🎊 A festa está chegando! 🎊</button>
+        </div>
+
+        <!-- Preview -->
+        <div class="preview-section">
+            <h2 class="section-title">Prévia da Festa</h2>
+            <p class="section-subtitle">Assista ao vídeo e sinta o clima da nossa celebração!</p>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/hfE3XIkV2d0" 
+                        title="Rick Astley - Never Gonna Give You Up" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+              </div>
+    <button class="cta-button" style="margin-top: 30px;" onclick="window.open('https://chat.whatsapp.com/H4nsiyRaMiNAgGr8HtG50v?mode=ems_copy_c', '_blank')">
+        🎬 Clique aqui para confirmar presença 🎬
+    </button>
+</div>
+
+        <!-- Birthday People -->
+<div class="preview-section">
+    <h2 class="section-title">Nossos Aniversariantes</h2>
+    <p class="section-subtitle">Três pessoas especiais, um só dia mágico!</p>
+    <div class="birthday-people">
+        <div class="person-card">
+            <div class="person-avatar">
+                <img src="images/magda.jpg" alt="Magda" class="person-photo">
+            </div>
+            <div class="person-name">Magda</div>
+        </div>
+        <div class="person-card">
+            <div class="person-avatar">
+                <img src="images/Eder.jpg" alt="Eder" class="person-photo">
+            </div>
+            <div class="person-name">Eder</div>
+        </div>
+        <div class="person-card">
+            <div class="person-avatar">
+                <img src="images/raquel.jpg" alt="Raquel" class="person-photo">
+            </div>
+            <div class="person-name">Raquel</div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Adicione este CSS para as fotos funcionarem corretamente */
+.person-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+</style>
+
+        <!-- Details -->
+        <div class="details-section">
+            <h2 class="section-title" style="text-align: center;">Detalhes da Festa</h2>
+            <div class="details-grid">
+                <div class="detail-card">
+                    <div class="detail-header">📅 Data & Horário</div>
+                    <div class="detail-content">
+                        <div class="detail-item">
+                            <span class="detail-icon">📆</span>
+                            <span>quarta-feira, 6 de setembro de 2025</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🕐</span>
+                            <span>19:00 às 23:00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-header">📍 Local</div>
+                    <div class="detail-content">
+                        <div class="detail-item">
+                            <span class="detail-icon">🏠</span>
+                            <span>Condomínio Serena</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">📍</span>
+                            <span>Rua César Hasselmann, nº 633</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🌆</span>
+                            <span>Bosqueirão - Araucária</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">💌</span>
+                            <span style="color: #FF6B6B;">Estacionamento gratuito disponível</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- What to Expect -->
+        <div class="expect-section">
+            <h2 class="section-title" style="text-align: center;">O que te espera</h2>
+            <div class="expect-grid">
+                <div class="expect-card">
+                    <div class="expect-icon">🎵</div>
+                    <div class="expect-title">DJ & Música</div>
+                    <div class="expect-description">Os melhores hits para dançar a noite toda!</div>
+                </div>
+                <div class="expect-card">
+                    <div class="expect-icon">🍰</div>
+                    <div class="expect-title">Comida & Bebida</div>
+                    <div class="expect-description">Buffet completo com delícias para todos os gostos!</div>
+                </div>
+                <div class="expect-card">
+                    <div class="expect-icon">🎮</div>
+                    <div class="expect-title">Muita Diversão</div>
+                    <div class="expect-description">Jogos, piadas e momentos inesquecíveis!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RSVP Section -->
+    <div class="rsvp-section" id="rsvp">
+        <h2 class="rsvp-title">Confirme sua Presença!</h2>
+        <p class="rsvp-subtitle">Sua presença é o melhor presente que podemos receber. Por favor, confirme sua presença com antecedência.</p>
+        <div class="rsvp-buttons">
+            <button class="rsvp-btn" onclick="sendWhatsApp()">
+                📱 Ligar: (41) 9742-2917
+            </button>
+            <button class="rsvp-btn" onclick="sendWhatsApp()">
+                💬 WhatsApp: (41) 9742-2917
+            </button>
+        </div>
+        <button class="confirm-btn" onclick="confirmPresence()">
+            ✨ Quero confirmar minha presença agora! ✨
+        </button>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-logo">🎂</div>
+        <p class="footer-text">"Os melhores momentos da vida são aqueles que compartilhamos com quem amamos."</p>
+        <p class="footer-names">Com amor, Magda, Eder & Raquel 💕</p>
+    </div>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const eventDate = new Date('2025-09-04T19:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = '<h2 style="color: #D4941E;">A festa está acontecendo! 🎉</h2>';
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Scroll to RSVP
+        function scrollToRSVP() {
+            document.getElementById('rsvp').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // WhatsApp function
+        function sendWhatsApp() {
+            const phone = '5541974229170';
+            const message = 'Olá! Gostaria de confirmar minha presença na Festa Tripla! 🎉';
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        // Confirm Presence
+        function confirmPresence() {
+            const name = prompt('Por favor, digite seu nome:');
+            if (name) {
+                alert(`Obrigado ${name}! Sua presença foi confirmada! 🎉\n\nMal podemos esperar para celebrar com você!`);
+                sendWhatsApp();
+            }
+        }
+
+        // Add confetti on load
+        function createConfetti() {
+            const colors = ['#FFD700', '#FF69B4', '#00CED1', '#FF6347', '#7FFF00'];
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDelay = Math.random() * 3 + 's';
+                    confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 5000);
+                }, i * 100);
+            }
+        }
+
+        // Create confetti on page load
+        window.addEventListener('load', createConfetti);
+    </script>
+</body>
+</html>
